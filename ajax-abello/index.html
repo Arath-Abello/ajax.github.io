@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax2</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $.get({
+                url: 'https://reqres.in/api/users', //DIRECCIÓN SERVER
+                //data: JSON, //Optativo y no pesca el cponsole.table por eso copmento el data: JSON para que funcione
+                dataType: 'json', //Optativo
+                success: function (respuesta) {
+                    console.log(respuesta);
+                },
+                error: function () {
+                    console.error("Sin Respuesta");
+                }
+            });
+
+            alert('1.-Apreta el boton verde de cualquier dato para crear un nuevo registro al editarlo RECUERDA: el id es el número de los datos para que no te confundas' + '\n' + '2.-luego de crear un registro borra el dato antiguo con el boton rojo fijate en el número')
+
+            $.get("https://my-json-server.typicode.com/alaravena/ldp3101/usuarios",
+                function (datos) { //los datos json lo guardamos en la variable datos y lo recorremos
+
+                    $.each(datos, function (index, item) { //posicion = index / item = el dato donde se almacenara el elemento json y tiene categorias con datos por ejemplo .nombre tiene el dato de juan perez, etc.
+
+                        $("#tabla").append("<tr><td>" + item.id + "</td><td>" + item.nombre +
+                            "</td><td>" + item.email + "</td><td>" + "<button class='btn btn-success editar'><i class='fa-solid fa-pen-to-square'></i></button>" + "<button class='btn btn-danger eliminar'><i class='fa-solid fa-circle-minus'></i></button>" + "<button class='btn btn-primary info'><i class='fa-sharp fa-solid fa-circle-info'></i></button>" + "</td></tr>");
+
+                        // este codigo solo se ejecutara en los datos del ajax
+                        var eliminar = $('.eliminar');
+                        eliminar.click(function () {
+                            $(this).parents('tr').remove(); //seleccionamos y hacemos referencia al boton que esta metido en un td con la clase .eliminar y seleccionamos a los elementos padres de este td que seria el tr
+                        });
+
+                    });
+
+                    // al apretar el boton de editar, tendra todas estás instrucciones donde haremos nuestro registro
+                    var btn_editar = $('.editar');
+                    btn_editar.click(function () {
+                        var id_td = parseInt(prompt('ingrese numero de la tabla que quiera editar'));
+                        var edit_nombre = prompt('Editar el nombre');
+                        var edit_email = prompt('Editar el email');
+
+                        $("#tabla").append("<tr><td>" + id_td + "</td><td>" + edit_nombre +
+                            "</td><td>" + edit_email + "</td><td>" + "<button class='btn btn-success editar'><i class='fa-solid fa-pen-to-square'></i></button>" + "<button class='btn btn-danger eliminar'><i class='fa-solid fa-circle-minus'></i></button>" + "<button class='btn btn-primary info'><i class='fa-sharp fa-solid fa-circle-info'></i></button>" + "</td></tr>");
+
+                        // los elementos creados son afectados con eliminar dentro de este bloque
+                        var eliminar = $('.eliminar');
+                        eliminar.click(function () {
+                            $(this).parents('tr').remove(); //seleccionamos y hacemos referencia al boton que esta metido en un td con la clase .eliminar y seleccionamos a los elementos padres de este td que seria el tr
+                        });
+
+                    });
+
+                });
+
+        });
+
+
+
+    </script>
+</head>
+
+<body>
+    <main>
+        <table class="table table-striped" id="tabla">
+
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Colecciones <button class="btn btn-success editar"><i class="fa-solid fa-pen-to-square"></i></button></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
