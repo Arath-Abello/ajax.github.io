@@ -17,20 +17,9 @@
 
     <script>
 
-        $(document).ready(function () {
-            $.get({
-                url: 'https://reqres.in/api/users', //DIRECCIÓN SERVER
-                //data: JSON, //Optativo y no pesca el cponsole.table por eso copmento el data: JSON para que funcione
-                dataType: 'json', //Optativo
-                success: function (respuesta) {
-                    console.log(respuesta);
-                },
-                error: function () {
-                    console.error("Sin Respuesta");
-                }
-            });
+        $(document).ready(function () {    
 
-            alert('1.-Apreta el boton verde de cualquier dato para crear un nuevo registro al editarlo RECUERDA: el id es el número de los datos para que no te confundas' + '\n' + '2.-luego de crear un registro borra el dato antiguo con el boton rojo fijate en el número')
+            alert('1.-Apreta el boton verde para crear un nuevo registro al editarlo' + '\n' + '2.-luego de crear un registro borra con el boton rojo');
 
             $.get("https://my-json-server.typicode.com/alaravena/ldp3101/usuarios",
                 function (datos) { //los datos json lo guardamos en la variable datos y lo recorremos
@@ -84,7 +73,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Colecciones <button class="btn btn-success editar"><i class="fa-solid fa-pen-to-square"></i></button></th>
+                    <th scope="col">Colecciones <button class="btn btn-success editar"><i
+                                class="fa-solid fa-pen-to-square"></i></button></th>
                 </tr>
             </thead>
             <tbody>
