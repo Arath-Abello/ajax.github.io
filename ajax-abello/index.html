@@ -53,7 +53,13 @@
                             $(this).parents('tr').remove(); //seleccionamos y hacemos referencia al boton que esta metido en un td con la clase .eliminar y seleccionamos a los elementos padres de este td que seria el tr
                         });
 
+                        var info = $('.info');
+                        info.click(function(){
+                            alert(id_td, edit_nombre, edit_email);
+                        });
                     });
+
+
 
                 });
 
