@@ -27,7 +27,7 @@
                     $.each(datos, function (index, item) { //posicion = index / item = el dato donde se almacenara el elemento json y tiene categorias con datos por ejemplo .nombre tiene el dato de juan perez, etc.
 
                         $("#tabla").append("<tr><td>" + item.id + "</td><td>" + item.nombre +
-                            "</td><td>" + item.email + "</td><td>" + "<button class='btn btn-success editar'><i class='fa-solid fa-pen-to-square'></i></button>" + "<button class='btn btn-danger eliminar'><i class='fa-solid fa-circle-minus'></i></button>" + "<button class='btn btn-primary info'><i class='fa-sharp fa-solid fa-circle-info'></i></button>" + "</td></tr>");
+                            "</td><td>" + item.email + "</td><td>" + "<button class='btn btn-success'><i class='fa-solid fa-pen-to-square'></i></button>" + "<button class='btn btn-danger eliminar'><i class='fa-solid fa-circle-minus'></i></button>" + "<button class='btn btn-primary info'><i class='fa-sharp fa-solid fa-circle-info'></i></button>" + "</td></tr>");
 
                         // este codigo solo se ejecutara en los datos del ajax
                         var eliminar = $('.eliminar');
