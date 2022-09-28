@@ -29,7 +29,7 @@
                         $("#tabla").append("<tr><td>" + item.id + "</td><td>" + item.nombre +
                             "</td><td>" + item.email + "</td><td>" + "<button class='btn btn-success'><i class='fa-solid fa-pen-to-square'></i></button>" + "<button class='btn btn-danger eliminar'><i class='fa-solid fa-circle-minus'></i></button>" + "<button class='btn btn-primary info'><i class='fa-sharp fa-solid fa-circle-info'></i></button>" + "</td></tr>");
 
-                        // este codigo solo se ejecutara en los datos del ajax
+                        // esta variable eliminar solamente va a afectar a esta parte que genera el link
                         var eliminar = $('.eliminar');
                         eliminar.click(function () {
                             $(this).parents('tr').remove(); //seleccionamos y hacemos referencia al boton que esta metido en un td con la clase .eliminar y seleccionamos a los elementos padres de este td que seria el tr
